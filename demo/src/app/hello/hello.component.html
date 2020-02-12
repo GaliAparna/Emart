@@ -1,0 +1,11 @@
+<section>
+    <div>
+        <label> user Name:</label>
+        <input type="text" [(ngModel)]="userName"  />
+
+        <button (click)="greet()" >Hai App! </button>
+    </div>
+    <div>
+        <p>Hello! {{this.userName}}!! welcome to our webapp!</p>
+    </div>
+</section>

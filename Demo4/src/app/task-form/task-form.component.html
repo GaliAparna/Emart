@@ -1,0 +1,42 @@
+
+<section class="container p-5">
+    <h3>{{isNew?"Add ": "Edit "}} Task</h3>
+    <form class="form" #f="ngForm">
+        <div>
+            <label>Task ID</label>
+            <input type="number" name="cid" [(ngModel)]="task.taskId" class="form-control"
+            [readonly]="!isNew" required="required" min="100" #cid="ngModel"/>
+            <ol *ngIf="(cid.touched || cid.dirty) && cid.invalid">
+                <li *ngIf="cid.errors.required">can not be left blank</li>
+                <li *ngIf="cid.errors.min">can not be less tha 100</li>
+            </ol>
+        </div>
+        <div>
+            <label>Task Name</label>
+            <input type="text"
+            name="tnm" [(ngModel)]="task.taskName" class="form-control" required #fnm="ngModel" 
+            minlength="5"/>
+            <ol *ngIf="(cid.touched || cid.dirty) && cid.invalid">
+                <li *ngIf="cid.errors.required">can not be left blank</li>
+                <li *ngIf="cid.errors.minlength">can not be less than 5 chars</li>
+            </ol>
+        </div>
+        <div>
+            <label> Start Date</label>
+            <input type="Date" name="sd" [(ngModel)]="sDate" (change)="sDateUpdate()" class="form-control"/>
+        </div>
+
+        <div>
+            <label> End Date</label>
+            <input type="Date" name="ed" [(ngModel)]="eDate" (change)="eDateUpdate()" class="form-control"/>
+        </div>
+        <div class="text-right">
+            <button type="button" name="btnSave" class="btn btn-primary"
+            [disabled] ="f.invalid"
+            (click)="save()">ADD</button>
+        </div>
+
+
+    </form>
+
+</section>
